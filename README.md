@@ -1,6 +1,5 @@
 # Packet Capture and Protocol Identification Via Wireshark
 
-* **Date:** September 5, 2026
 * **Operating System:** Linux Mint
 * **Active Network Interface:** `ens33`
 * **Lab Host IP Address:** `192.168.6.130`
