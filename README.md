@@ -41,7 +41,7 @@ The client machine generated a stateless outbound query asking for the IP coordi
 ### Protocol Behavior
 Unlike UDP, web data requires strict data reliability [INDEX]. Frame 738 captures the completion of the standard **TCP 3-Way Handshake** (`SYN` ➔ `SYN-ACK` ➔ `ACK`) [INDEX]. The captured packet shows the active **ACK flag** with relative sequence and acknowledgment tracking markers engaged [INDEX]. This confirms that the two systems successfully completed their introductions, reserved buffer sockets, and established a synchronized channel before transferring any application data [INDEX].
 
-![Figure 2: TCP Handshake Verification showing active ACK Flag (0x010)](images/tcp_handshake.png)
+![Figure 2: TCP Handshake Verification showing active ACK Flag (0x010)](images/tcp.png)
 
 ---
 
@@ -60,7 +60,7 @@ This phase evaluates the stark data security and exposure differences between un
 ### Protocol Behavior (HTTP)
 The captured frame shows a cleartext server response payload [INDEX]. Because standard HTTP on Port 80 lacks any encryption capabilities, the entire packet layout—including status strings, server headers, and the underlying text data—is completely exposed in plain text within Wireshark's packet details pane [INDEX]. Any device listening on the network path can read this data instantly [INDEX].
 
-![Figure 3: HTTP Plaintext Verification showing Frame 7949 unencrypted payload data](images/http_plaintext.png)
+![Figure 3: HTTP Plaintext Verification showing Frame 7949 unencrypted payload data](images/http.png)
 
 ### Encrypted HTTPS Traffic Profile (Frame 7948)
 * **Source IP:** `192.168.6.130` (Linux Mint Host)
@@ -73,7 +73,7 @@ The captured frame shows a cleartext server response payload [INDEX]. Because st
 ### Protocol Behavior (HTTPS)
 When connecting over Port 443, the session immediately initializes a **TLSv1.3 cryptographic handshake** directly following the TCP handshake [INDEX]. Secret encryption keys are securely generated and exchanged between the host and server [INDEX]. As a result, all subsequent application payloads are completely scrambled [INDEX]. Wireshark cannot read the URLs, headers, or web contents, labeling the stream securely as unreadable application data blocks [INDEX].
 
-![Figure 4: HTTPS Encryption Verification showing scrambled TLSv1.3 application data](images/https_encrypted.png)
+![Figure 4: HTTPS Encryption Verification showing scrambled TLSv1.3 application data](images/https.png)
 
 ---
 
